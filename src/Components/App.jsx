@@ -1,25 +1,25 @@
-import Todo from "./Todo";
-import todosData from '../todosData'
-import { useState } from 'react'
+import todosData from "../todosData";
+import List from "./List";
+import Header from "./Header";
+import { useState, createContext } from "react";
+
+const AppContext = createContext();
 
 function App() {
-  const [todos, setTodos] = useState(todosData)
-  
-  const todoEls = todos.map(todo => {
-    return (
-      <Todo key={todo.id} text={todo.text} isComplete={todo.isComplete} />
-    )
-  })
+  const [todos, setTodos] = useState(todosData);
+
   return (
-    <main>
-      <h1>Todo</h1>
-      <main className="font-josefin-sans">
-        <ul>
-          {todoEls}
-        </ul>
+    <AppContext.Provider value={todos}>
+      <main className="bg-very-dark-blue min-h-screen font-josefin-sans flex flex-col p-5 justify-center">
+        <Header />
+        <List todos={todos} />
       </main>
-    </main>
+    </AppContext.Provider>
   );
 }
 
 export default App;
+export { AppContext };
+
+// gradient:
+// bg-gradient-to-r from-gradient-1 to-gradient-2

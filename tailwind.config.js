@@ -4,6 +4,8 @@ export default {
   theme: {
     extend: {
       colors: {
+        "gradient-1": "hsl(192, 100%, 67%)",
+        "gradient-2": "hsl(280, 87%, 65%)",
         "bright-blue": "hsl(220, 98%, 61%)",
         "very-light-gray": "hsl(0, 0%, 98%)",
         "very-dark-blue": "hsl(235, 21%, 11%)",
@@ -17,6 +19,9 @@ export default {
       fontFamily: {
         "josefin-sans": ["Josefin Sans", "sans-serif"],
       },
+      letterSpacing: {
+        'even-wider': '0.4em'
+      }
     },
   },
   plugins: [],
