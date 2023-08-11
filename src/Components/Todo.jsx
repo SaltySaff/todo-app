@@ -9,7 +9,7 @@ export default function Todo(props) {
           props.isComplete ? "line-through text-dark-grayish-blue" : null
         }`}
       >
-        <Button />
+        <Button isComplete={props.isComplete} />
         {props.text}
       </li>
       <hr className="border-t border-very-dark-grayish-blue2" />

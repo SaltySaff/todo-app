@@ -8,6 +8,10 @@ const AppContext = createContext();
 function App() {
   const [todos, setTodos] = useState(todosData);
 
+  const toggleComplete = () => {
+    
+  }
+
   return (
     <AppContext.Provider value={todos}>
       <main className="bg-very-dark-blue min-h-screen font-josefin-sans flex flex-col p-5 justify-center">
