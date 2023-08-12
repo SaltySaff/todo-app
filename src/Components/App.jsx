@@ -1,6 +1,7 @@
 import todosData from "../todosData";
 import List from "./List";
 import Header from "./Header";
+import Input from "./Input"
 import { useState, createContext } from "react";
 
 const AppContext = createContext();
@@ -20,6 +21,7 @@ function App() {
     <AppContext.Provider value={{todos, toggleComplete}}>
       <main className="bg-very-dark-blue min-h-screen font-josefin-sans flex flex-col p-5 justify-center">
         <Header />
+        <Input />
         <List todos={todos} />
       </main>
     </AppContext.Provider>
