@@ -19,9 +19,11 @@ function App() {
   };
 
   const removeTodo = (id) => {
-    setTodos((prevTodos) =>
-      prevTodos.filter(item => item.id !== id)
-    );
+    setTodos((prevTodos) => prevTodos.filter((item) => item.id !== id));
+  };
+
+  const removeCompleted = () => {
+    setTodos((prevTodos) => prevTodos.filter((item) => !item.isComplete));
   };
 
   const handleInputChange = (e) => {
@@ -33,7 +35,9 @@ function App() {
   };
 
   return (
-    <AppContext.Provider value={{ todos, toggleComplete, handleInputChange, removeTodo }}>
+    <AppContext.Provider
+      value={{ todos, toggleComplete, handleInputChange, removeTodo, removeCompleted }}
+    >
       <main className="bg-very-dark-blue min-h-screen font-josefin-sans flex flex-col p-5 justify-center">
         <Header />
         <Input />

@@ -3,7 +3,7 @@ import { useContext, useState, useEffect } from "react";
 import Todo from "./Todo";
 
 export default function List() {
-  const { todos } = useContext(AppContext);
+  const { todos, removeCompleted } = useContext(AppContext);
   const [remainingCount, setRemainingCount] = useState(0);
 
   const todoEls = todos.map((todo) => {
@@ -24,7 +24,7 @@ export default function List() {
       <ul>{todoEls}</ul>
       <section className="text-xs text-dark-grayish-blue px-5 py-4 flex justify-between font">
         <span>{remainingCount} items left</span>
-        <span>Clear Completed</span>
+        <span className="hover:text-light-grayish-blue cursor-pointer" onClick={removeCompleted}>Clear Completed</span>
       </section>
     </section>
   );
