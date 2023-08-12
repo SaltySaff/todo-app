@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "./App";
 
-export default function Button({isComplete, id}) {
+export default function CompleteButton({isComplete, id}) {
   const { toggleComplete } = useContext(AppContext);
   return (
     <button

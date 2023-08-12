@@ -18,6 +18,12 @@ function App() {
     );
   };
 
+  const removeTodo = (id) => {
+    setTodos((prevTodos) =>
+      prevTodos.filter(item => item.id !== id)
+    );
+  };
+
   const handleInputChange = (e) => {
     console.log(e.target.value);
     const value = e.target.value;
@@ -27,7 +33,7 @@ function App() {
   };
 
   return (
-    <AppContext.Provider value={{ todos, toggleComplete, handleInputChange }}>
+    <AppContext.Provider value={{ todos, toggleComplete, handleInputChange, removeTodo }}>
       <main className="bg-very-dark-blue min-h-screen font-josefin-sans flex flex-col p-5 justify-center">
         <Header />
         <Input />
