@@ -1,7 +1,6 @@
 import Button from "./Button";
 
 export default function Todo(props) {
-  console.log("props", props);
   return (
     <>
       <li
@@ -9,7 +8,7 @@ export default function Todo(props) {
           props.isComplete ? "line-through text-dark-grayish-blue" : null
         }`}
       >
-        <Button isComplete={props.isComplete} />
+        <Button id={props.id} isComplete={props.isComplete} />
         {props.text}
       </li>
       <hr className="border-t border-very-dark-grayish-blue2" />

@@ -8,12 +8,16 @@ const AppContext = createContext();
 function App() {
   const [todos, setTodos] = useState(todosData);
 
-  const toggleComplete = () => {
-    
-  }
+  const toggleComplete = (id) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((item) =>
+        item.id === id ? { ...item, isComplete: !item.isComplete } : item,
+      ),
+    );
+  };
 
   return (
-    <AppContext.Provider value={todos}>
+    <AppContext.Provider value={{todos, toggleComplete}}>
       <main className="bg-very-dark-blue min-h-screen font-josefin-sans flex flex-col p-5 justify-center">
         <Header />
         <List todos={todos} />
