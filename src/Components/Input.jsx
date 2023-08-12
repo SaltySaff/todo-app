@@ -1,6 +1,16 @@
+import { useContext } from "react";
+import { AppContext } from "./App";
+
 export default function Input() {
-  const handleChange = () => {};
-  
+  const { handleInputChange } = useContext(AppContext)
+
+  const handleKeyDown = (e) => {
+    if(e.key === 'Enter') {
+        handleInputChange(e)
+    }
+  }
+
+  (AppContext);
   return (
     <section className="flex items-center py-4 px-5 bg-very-dark-desaturated-blue mb-5 rounded-md">
       <div className="rounded-full ring-1 ring-dark-grayish-blue p-2 mr-3"></div>
@@ -8,7 +18,8 @@ export default function Input() {
         className="bg-transparent text-xs text-light-grayish-blue focus:outline-none"
         type="text"
         placeholder="Create a new todo..."
-        name="todo-input"
+        name="text"
+        onKeyDown={handleKeyDown}
       />
     </section>
   );
