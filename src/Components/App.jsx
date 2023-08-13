@@ -2,6 +2,7 @@ import todosData from "../todosData";
 import List from "./List";
 import Header from "./Header";
 import Input from "./Input";
+import Filter from "./Filter"
 import { useState, createContext } from "react";
 import { nanoid } from "nanoid";
 
@@ -42,6 +43,7 @@ function App() {
         <Header />
         <Input />
         <List todos={todos} />
+        <Filter />
       </main>
     </AppContext.Provider>
   );
