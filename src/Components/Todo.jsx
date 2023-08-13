@@ -1,5 +1,5 @@
 import CompleteButton from "./CompleteButton";
-import RemoveButton from "./RemoveButton"
+import RemoveButton from "./RemoveButton";
 
 export default function Todo(props) {
   return (

@@ -2,7 +2,7 @@ import todosData from "../todosData";
 import List from "./List";
 import Header from "./Header";
 import Input from "./Input";
-import Filter from "./Filter"
+import Filters from "./Filters";
 import { useState, createContext } from "react";
 import { nanoid } from "nanoid";
 
@@ -10,6 +10,7 @@ const AppContext = createContext();
 
 function App() {
   const [todos, setTodos] = useState(todosData);
+  const [selectedFilter, setSelectedFilter] = useState("All");
 
   const toggleComplete = (id) => {
     setTodos((prevTodos) =>
@@ -37,13 +38,21 @@ function App() {
 
   return (
     <AppContext.Provider
-      value={{ todos, toggleComplete, handleInputChange, removeTodo, removeCompleted }}
+      value={{
+        todos,
+        toggleComplete,
+        handleInputChange,
+        removeTodo,
+        removeCompleted,
+        selectedFilter,
+        setSelectedFilter,
+      }}
     >
-      <main className="bg-very-dark-blue min-h-screen font-josefin-sans flex flex-col p-5 justify-center">
+      <main className="bg-very-dark-blue min-h-screen font-josefin-sans flex flex-col p-5">
         <Header />
         <Input />
         <List todos={todos} />
-        <Filter />
+        <Filters />
       </main>
     </AppContext.Provider>
   );

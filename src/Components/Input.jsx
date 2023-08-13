@@ -1,13 +1,19 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "./App";
 
 export default function Input() {
   const { handleInputChange } = useContext(AppContext)
+  const [inputValue, setInputValue] = useState("")
 
   const handleKeyDown = (e) => {
     if(e.key === 'Enter') {
         handleInputChange(e)
+        setInputValue("")
     }
+  }
+
+  const handleValueChange = (e) => {
+    setInputValue(e.target.value)
   }
 
   (AppContext);
@@ -19,7 +25,9 @@ export default function Input() {
         type="text"
         placeholder="Create a new todo..."
         name="text"
+        value={inputValue}
         onKeyDown={handleKeyDown}
+        onChange={handleValueChange}
       />
     </section>
   );
