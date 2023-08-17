@@ -16,10 +16,9 @@ export default function List() {
     } else {
       return [...todos];
     }
-};
+  };
 
   const todoEls = filteredTodos.map((todo, index) => {
-    console.log('Draggable ID:', todo.id)
     return (
       <Draggable key={todo.id} draggableId={todo.id} index={index}>
         {(provided) => (
@@ -48,9 +47,9 @@ export default function List() {
     const reorderedTodos = Array.from(filteredTodos);
     const [reorderedItem] = reorderedTodos.splice(result.source.index, 1);
     reorderedTodos.splice(result.destination.index, 0, reorderedItem);
-    
+
     setFilteredTodos(reorderedTodos);
-};
+  };
 
   useEffect(() => {
     calculateRemaining();
@@ -58,7 +57,7 @@ export default function List() {
 
   useEffect(() => {
     setFilteredTodos(selectFilter(selectedFilter));
-}, [selectedFilter, todos]);
+  }, [selectedFilter, todos]);
 
   return (
     <section className="bg-very-dark-desaturated-blue text-light-grayish-blue rounded-md">
@@ -71,6 +70,7 @@ export default function List() {
               ref={provided.innerRef}
             >
               {todoEls}
+              {provided.placeholder} 
             </ul>
           )}
         </Droppable>

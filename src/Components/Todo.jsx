@@ -4,7 +4,6 @@ import RemoveButton from "./RemoveButton";
 export default function Todo(props) {
   return (
     <>
-      {console.log('Rendering Draggable with ID:', props.id)}
       <li
         ref={props.innerRef}
         {...props.draggableProps}
@@ -23,5 +22,3 @@ export default function Todo(props) {
     </>
   );
 }
-
-// move state to parent component, it shouldn't be in here
