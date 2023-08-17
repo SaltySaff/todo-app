@@ -78,7 +78,7 @@ export default function List() {
           )}
         </Droppable>
       </DragDropContext>
-      <section className="text-xs text-dark-grayish-blue px-5 py-4 flex justify-between font">
+      <section className="text-xs md:text-sm text-dark-grayish-blue px-5 py-4 flex justify-between font">
         <span>{remainingCount} items left</span>
         <span
           className="hover:text-light-grayish-blue cursor-pointer"

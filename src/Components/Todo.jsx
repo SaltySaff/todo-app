@@ -8,7 +8,7 @@ export default function Todo(props) {
         ref={props.innerRef}
         {...props.draggableProps}
         {...props.dragHandleProps}
-        className={`bg-very-dark-desaturated-blue rounded-md flex flex-col text-xs  ${
+        className={`bg-very-dark-desaturated-blue rounded-md flex flex-col text-xs md:text-sm  ${
           props.isComplete ? "line-through text-dark-grayish-blue" : null
         }`}
       >

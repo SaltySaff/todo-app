@@ -21,8 +21,8 @@ function App() {
   };
 
   const updateTodos = (newTodos) => {
-    setTodos(newTodos)
-  }
+    setTodos(newTodos);
+  };
 
   const addTodo = (text) => {
     const newTodo = { id: nanoid(), text: text, isComplete: false };
@@ -30,10 +30,10 @@ function App() {
   };
 
   const removeTodo = (id) => {
-    console.log('ID to remove:', id)
+    console.log("ID to remove:", id);
     setTodos((prevTodos) => {
       const updatedTodos = prevTodos.filter((item) => item.id !== id);
-      console.log('Updated todos after removing:', updatedTodos);
+      console.log("Updated todos after removing:", updatedTodos);
       return updatedTodos;
     });
   };
@@ -63,11 +63,13 @@ function App() {
         setSelectedFilter,
       }}
     >
-      <main className="bg-very-dark-blue min-h-screen font-josefin-sans flex flex-col p-5">
-        <Header />
-        <Input />
-        <List todos={todos} />
-        <Filters />
+      <main className="bg-very-dark-blue min-h-screen font-josefin-sans flex flex-col items-center justify-center p-5">
+        <div className="md:max-w-3xl w-full md:mx-auto">
+          <Header />
+          <Input />
+          <List todos={todos} />
+          <Filters />
+        </div>
       </main>
     </AppContext.Provider>
   );
@@ -75,6 +77,3 @@ function App() {
 
 export default App;
 export { AppContext };
-
-// gradient:
-// bg-gradient-to-r from-gradient-1 to-gradient-2
