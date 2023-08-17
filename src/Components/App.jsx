@@ -20,6 +20,10 @@ function App() {
     );
   };
 
+  const updateTodos = (newTodos) => {
+    setTodos(newTodos)
+  }
+
   const addTodo = (text) => {
     const newTodo = { id: nanoid(), text: text, isComplete: false };
     setTodos((prevTodos) => [...prevTodos, newTodo]);
@@ -52,6 +56,7 @@ function App() {
         todos,
         toggleComplete,
         addTodo,
+        updateTodos,
         removeTodo,
         removeCompleted,
         selectedFilter,

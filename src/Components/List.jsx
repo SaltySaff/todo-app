@@ -4,7 +4,7 @@ import Todo from "./Todo";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 
 export default function List() {
-  const { todos, removeCompleted, selectedFilter } = useContext(AppContext);
+  const { todos, removeCompleted, selectedFilter, updateTodos } = useContext(AppContext);
   const [remainingCount, setRemainingCount] = useState(0);
   const [filteredTodos, setFilteredTodos] = useState(todos);
 
@@ -44,13 +44,15 @@ export default function List() {
 
   const handleDragEnd = (result) => {
     if (!result.destination) return; // Dropped outside the list
-
+ 
     const reorderedTodos = Array.from(filteredTodos);
     const [reorderedItem] = reorderedTodos.splice(result.source.index, 1);
     reorderedTodos.splice(result.destination.index, 0, reorderedItem);
-
+ 
     setFilteredTodos(reorderedTodos);
-  };
+    
+    updateTodos(reorderedTodos);
+ };
 
   useEffect(() => {
     calculateRemaining();
