@@ -1,46 +1,39 @@
 import { AppContext } from "./App";
 import { useContext, useState, useEffect } from "react";
 import Todo from "./Todo";
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 
 export default function List() {
   const { todos, removeCompleted, selectedFilter } = useContext(AppContext);
   const [remainingCount, setRemainingCount] = useState(0);
   const [filteredTodos, setFilteredTodos] = useState(todos);
 
-  const filterComplete = () => {
-    setFilteredTodos((prevTodos) => {
-      return prevTodos.filter((item) => item.isComplete);
-    });
-  };
-
-  const filterActive = () => {
-    setFilteredTodos((prevTodos) => {
-      return prevTodos.filter((item) => !item.isComplete);
-    });
-  };
-
-  const filterAll = () => {
-    return setFilteredTodos(todos);
-  };
-
   const selectFilter = (filter) => {
     if (filter === "Active") {
-      filterActive();
+      return todos.filter((item) => !item.isComplete);
     } else if (filter === "Completed") {
-      filterComplete();
+      return todos.filter((item) => item.isComplete);
     } else {
-      filterAll();
+      return [...todos];
     }
-  };
+};
 
-  const todoEls = filteredTodos.map((todo) => {
+  const todoEls = filteredTodos.map((todo, index) => {
+    console.log('Draggable ID:', todo.id)
     return (
-      <Todo
-        key={todo.id}
-        id={todo.id}
-        text={todo.text}
-        isComplete={todo.isComplete}
-      />
+      <Draggable key={todo.id} draggableId={todo.id} index={index}>
+        {(provided) => (
+          <Todo
+            key={todo.id}
+            id={todo.id}
+            text={todo.text}
+            isComplete={todo.isComplete}
+            innerRef={provided.innerRef}
+            draggableProps={provided.draggableProps}
+            dragHandleProps={provided.dragHandleProps}
+          />
+        )}
+      </Draggable>
     );
   });
 
@@ -49,18 +42,39 @@ export default function List() {
     setRemainingCount(complete.length);
   };
 
+  const handleDragEnd = (result) => {
+    if (!result.destination) return; // Dropped outside the list
+
+    const reorderedTodos = Array.from(filteredTodos);
+    const [reorderedItem] = reorderedTodos.splice(result.source.index, 1);
+    reorderedTodos.splice(result.destination.index, 0, reorderedItem);
+    
+    setFilteredTodos(reorderedTodos);
+};
+
   useEffect(() => {
     calculateRemaining();
   }, [todos]);
 
   useEffect(() => {
-    setFilteredTodos(todos);
-    selectFilter(selectedFilter);
-  }, [selectedFilter, todos]);
+    setFilteredTodos(selectFilter(selectedFilter));
+}, [selectedFilter, todos]);
 
   return (
     <section className="bg-very-dark-desaturated-blue text-light-grayish-blue rounded-md">
-      <ul>{todoEls}</ul>
+      <DragDropContext onDragEnd={handleDragEnd}>
+        <Droppable droppableId="todos">
+          {(provided) => (
+            <ul
+              className="todos"
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
+              {todoEls}
+            </ul>
+          )}
+        </Droppable>
+      </DragDropContext>
       <section className="text-xs text-dark-grayish-blue px-5 py-4 flex justify-between font">
         <span>{remainingCount} items left</span>
         <span

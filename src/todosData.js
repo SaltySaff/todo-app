@@ -1,31 +1,33 @@
+import { nanoid } from "nanoid";
+
 const todosData = [
   {
-    id: 1,
+    id: nanoid(),
     text: "Complete online JavaScript course",
     isComplete: true,
   },
   {
-    id: 2,
+    id: nanoid(),
     text: "Jog around the park 3x",
     isComplete: false,
   },
   {
-    id: 3,
+    id: nanoid(),
     text: "10 minutes meditation",
     isComplete: false,
   },
   {
-    id: 4,
+    id: nanoid(),
     text: "Read for 1 hour",
     isComplete: false,
   },
   {
-    id: 5,
+    id: nanoid(),
     text: "Pick up groceries",
     isComplete: false,
   },
   {
-    id: 6,
+    id: nanoid(),
     text: "Complete Todo App on Frontend Mentor",
     isComplete: false,
   },

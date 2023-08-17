@@ -4,8 +4,12 @@ import RemoveButton from "./RemoveButton";
 export default function Todo(props) {
   return (
     <>
+      {console.log('Rendering Draggable with ID:', props.id)}
       <li
-        className={`flex justify-between text-xs py-4 px-5 ${
+        ref={props.innerRef}
+        {...props.draggableProps}
+        {...props.dragHandleProps}
+        className={`todos flex justify-between text-xs py-4 px-5 ${
           props.isComplete ? "line-through text-dark-grayish-blue" : null
         }`}
       >

@@ -20,8 +20,18 @@ function App() {
     );
   };
 
+  const addTodo = (text) => {
+    const newTodo = { id: nanoid(), text: text, isComplete: false };
+    setTodos((prevTodos) => [...prevTodos, newTodo]);
+  };
+
   const removeTodo = (id) => {
-    setTodos((prevTodos) => prevTodos.filter((item) => item.id !== id));
+    console.log('ID to remove:', id)
+    setTodos((prevTodos) => {
+      const updatedTodos = prevTodos.filter((item) => item.id !== id);
+      console.log('Updated todos after removing:', updatedTodos);
+      return updatedTodos;
+    });
   };
 
   const removeCompleted = () => {
@@ -41,7 +51,7 @@ function App() {
       value={{
         todos,
         toggleComplete,
-        handleInputChange,
+        addTodo,
         removeTodo,
         removeCompleted,
         selectedFilter,

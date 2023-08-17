@@ -2,15 +2,15 @@ import { useContext, useState } from "react";
 import { AppContext } from "./App";
 
 export default function Input() {
-  const { handleInputChange } = useContext(AppContext)
+  const { addTodo } = useContext(AppContext)
   const [inputValue, setInputValue] = useState("")
 
   const handleKeyDown = (e) => {
-    if(e.key === 'Enter') {
-        handleInputChange(e)
-        setInputValue("")
+    if(e.key === 'Enter' && inputValue.trim() !== "") {
+        addTodo(inputValue); // Use the addTodo function here
+        setInputValue("");
     }
-  }
+}
 
   const handleValueChange = (e) => {
     setInputValue(e.target.value)
