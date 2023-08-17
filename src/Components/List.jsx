@@ -21,7 +21,7 @@ export default function List() {
   const todoEls = filteredTodos.map((todo, index) => {
     return (
       <Draggable key={todo.id} draggableId={todo.id} index={index}>
-        {(provided) => (
+        {(provided, snapshot) => (
           <Todo
             key={todo.id}
             id={todo.id}
@@ -30,6 +30,7 @@ export default function List() {
             innerRef={provided.innerRef}
             draggableProps={provided.draggableProps}
             dragHandleProps={provided.dragHandleProps}
+            isDragging={snapshot.isDragging}
           />
         )}
       </Draggable>

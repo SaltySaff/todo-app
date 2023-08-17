@@ -8,17 +8,19 @@ export default function Todo(props) {
         ref={props.innerRef}
         {...props.draggableProps}
         {...props.dragHandleProps}
-        className={`todos flex justify-between text-xs py-4 px-5 ${
+        className={`bg-very-dark-desaturated-blue rounded-md flex flex-col text-xs  ${
           props.isComplete ? "line-through text-dark-grayish-blue" : null
         }`}
       >
-        <span className="flex items-center">
-          <CompleteButton id={props.id} isComplete={props.isComplete} />
-          {props.text}
-        </span>
-        <RemoveButton id={props.id} />
+        <div className="flex justify-between py-4 px-5">
+          <span className="flex items-center">
+            <CompleteButton id={props.id} isComplete={props.isComplete} />
+            {props.text}
+          </span>
+          <RemoveButton id={props.id} />
+        </div>
+        <hr className="border-t border-very-dark-grayish-blue2" />
       </li>
-      <hr className="border-t border-very-dark-grayish-blue2" />
     </>
   );
 }
