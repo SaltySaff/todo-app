@@ -24,10 +24,10 @@ export default {
         "even-wider": "0.4em",
       },
       backgroundImage: {
-        "icon-check": "url('./images/icon-check.svg')",
-        "icon-cross": "url('./images/icon-cross.svg')",
-        "desktop-dark": "url('./images/bg-desktop-dark.jpg')",
-        "mobile-dark": "url('./images/bg-mobile-dark.jpg')"
+        "icon-check": "url('/images/icon-check.svg')",
+        "icon-cross": "url('/images/icon-cross.svg')",
+        "desktop-dark": "url('/images/bg-desktop-dark.jpg')",
+        "mobile-dark": "url('/images/bg-mobile-dark.jpg')"
       },
       backgroundSize: {
         'size-mobile':'100% 13.25em',
