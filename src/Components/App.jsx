@@ -63,7 +63,7 @@ function App() {
         setSelectedFilter,
       }}
     >
-      <main className="bg-very-dark-blue min-h-screen font-josefin-sans flex flex-col items-center justify-center p-5">
+      <main className="bg-very-dark-blue bg-size-mobile bg-mobile-dark md:bg-size-desktop sm:bg-desktop-dark bg-no-repeat min-h-screen font-josefin-sans flex flex-col items-center p-5">
         <div className="md:max-w-3xl w-full md:mx-auto">
           <Header />
           <Input />
