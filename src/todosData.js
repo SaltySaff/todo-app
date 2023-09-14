@@ -28,7 +28,7 @@ const todosData = [
   },
   {
     id: nanoid(),
-    text: "Complete Todo App on Frontend Mentor",
+    text: "Make dinner",
     isComplete: false,
   },
 ];
