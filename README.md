@@ -2,19 +2,12 @@
 
 A react-based todo app. Add, delete, filter and drag your todos in this simple web-based todo app.
 
-## Table of contents
-
-- [Links](#links)
-- [My process](#my-process)
-- [Built with](#built-with)
-- [Continued development](#continued-development)
-
 ## Overview
 
 ### Links
 
-- Solution URL: [Solution URL here](https://your-solution-url.com)
-- Live Site URL: [Live site URL here](https://your-live-site-url.com)
+- Code URL: [https://github.com/SaltySaff/todo-app](https://github.com/SaltySaff/todo-app)
+- Live Site URL: [https://candid-kleicha-2cd693.netlify.app/](https://candid-kleicha-2cd693.netlify.app/)
 
 ### Built with
 
